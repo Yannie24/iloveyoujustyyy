@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>For You 💖</title>
+  <meta name="description" content="A little surprise made just for you." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Great+Vibes&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Floating hearts (cute) -->
+  <div class="hearts" aria-hidden="true"></div>
+
+  <!-- Entry screen so audio can start on user tap -->
+  <section id="entry" class="screen show">
+    <div class="entry-card glass">
+      <h1 class="script">Hi, <span id="entryName">Love</span> ✨</h1>
+      <p>I made something special only for you.</p>
+      <div class="pin-wrap">
+        <input id="secretPin" type="password" maxlength="12" placeholder="Type our secret word" />
+      </div>
+      <button id="enterBtn" class="btn primary">Enter</button>
+      <small class="hint">Tip: set the secret & name in <code>script.js</code></small>
+    </div>
+  </section>
+
+  <!-- Main app -->
+  <header class="site-header">
+    <div class="brand">
+      <span class="logo">❤</span>
+      <span class="brand-text">For <span id="hisName">You</span></span>
+    </div>
+
+    <nav class="nav">
+      <button data-target="home"    class="tab active">Home</button>
+      <button data-target="gallery" class="tab">Gallery</button>
+      <button data-target="letters" class="tab">Letters</button>
+      <button data-target="quiz"    class="tab">Quiz</button>
+      <button data-target="surprise" class="tab">Surprise</button>
+    </nav>
+
+    <div class="controls">
+      <button id="toggleTheme" class="icon-btn" title="Toggle theme">🌓</button>
+      <button id="musicBtn" class="icon-btn" title="Music">🔊</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Home (romantic hero) -->
+    <section id="home" class="panel show">
+      <div class="hero glass">
+        <h2 class="script jumbo">I’m grateful for you</h2>
+        <p class="lead">Every day with you feels like a lucky day. Here are little pieces of “us”.</p>
+        <div class="cta-row">
+          <button data-target="letters" class="btn">Open a love note 💌</button>
+          <button data-target="gallery" class="btn outline">See memories 📸</button>
+        </div>
+      </div>
+      <div class="stats">
+        <div class="card">
+          <div class="stat" id="daysTogether">0</div>
+          <div class="label">days since we met</div>
+        </div>
+        <div class="card">
+          <div class="stat" id="sharedSongs">0</div>
+          <div class="label">songs we’ve shared</div>
+        </div>
+        <div class="card">
+          <div class="stat" id="insideJokes">∞</div>
+          <div class="label">inside jokes</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery (stylish slider) -->
+    <section id="gallery" class="panel">
+      <div class="panel-head">
+        <h3>Our Gallery</h3>
+        <p class="muted"> <code>AYOOOO</code> </p>
+      </div>
+      <div class="slider glass">
+        <button class="slide-btn prev">‹</button>
+        <div class="slides" id="slides"></div>
+        <button class="slide-btn next">›</button>
+      </div>
+      <div class="dots" id="dots"></div>
+    </section>
+
+    <!-- Letters (cute reveals) -->
+    <section id="letters" class="panel">
+      <div class="panel-head">
+        <h3>Little Letters</h3>
+        <p class="muted">Tap a card to reveal a note.</p>
+      </div>
+      <div class="grid" id="lettersGrid"></div>
+    </section>
+
+    <!-- Quiz (playful) -->
+    <section id="quiz" class="panel">
+      <div class="panel-head">
+        <h3>How well do you know me? 🧠</h3>
+        <p class="muted">No pressure — it’s all for fun.</p>
+      </div>
+      <form id="quizForm" class="quiz glass"></form>
+      <div id="quizResult" class="quiz-result"></div>
+    </section>
+
+    <!-- Surprise (locked reveal + confetti) -->
+    <section id="surprise" class="panel">
+      <div class="panel-head">
+        <h3>Final Surprise 🎁</h3>
+        <p class="muted">A tiny lock, a huge heart.</p>
+      </div>
+      <div class="surprise-card glass">
+        <input id="surpriseKey" class="surprise-input" type="password" placeholder="Enter the magic key" />
+        <button id="revealBtn" class="btn primary">Unlock</button>
+        <div id="surpriseContent" class="hidden">
+          <h4 class="script">I choose you, everyday.</h4>
+          <p>
+            Thank you for being you. I’m proud of us — of our laughter, our growth, and our quiet moments.
+          </p>
+          <video id="surpriseVideo" controls playsinline preload="metadata" class="media">
+            <source src="assets/surprise-video.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <small>Made with ❤️ by <span id="fromName">Your Girl</span></small>
+  </footer>
+
+  <!-- Music -->
+   <audio id="bgm" loop preload="auto">
+  <source src="assets/song.mp3" type="audio/mpeg" />
+</audio>
+
+<script>
+  const bgm = document.getElementById("bgm");
+
+  // Play music when user clicks anywhere on the page (first time only)
+  document.addEventListener("click", () => {
+    bgm.play().catch(err => {
+      console.log("Autoplay blocked:", err);
+    });
+  }, { once: true });
+</script>
+
+  <script src="script.js"></script>
+</body>
+</html>
